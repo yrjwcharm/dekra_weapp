@@ -1,0 +1,39 @@
+<!--pages/list/list.wxml-->
+<view class='topbar'>
+  <view class="nav" wx:for='{{nav_title}}' wx:key="index">
+    <view class="nav_item page_row {{shownavindex == index? 'on' : ''}}" bindtap="click_nav" data-index="{{index}}">
+      <view class="content">{{item}}
+        <view class="fa {{shownavindex == index? 'fa fa-angle-up' : 'fa fa-angle-down'}}"></view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='nav_centent_arr' wx:if="{{nav_centent.length}}">
+  <view style="height:408rpx">
+    <block wx:for="{{nav_centent}}" wx:key="index">
+      <view class='nav_centent' data-index="{{shownavindex+'_'+index}}" bindtap="click_cur">{{item}}</view>
+    </block>
+  </view>
+</view>
+<view class="overlay" bindtap='closeOverlay' wx:if="{{nav_centent.length}}"></view>
+
+<map wx:if="{{showStationData.length}}" id="map" longitude="{{ longitude }}" latitude="{{ latitude }}" scale="{{ scale }}" controls="{{controls}}"  markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" bindcontroltap="controltap" show-location="true" style="width:100%; height: 250px;"></map>
+
+<block wx:if="{{showStationData.length}}" wx:for="{{showStationData}}">
+<navigator url="/pages/book/detect?stationId={{ item['id'] }}" hover-class="navigator-hover">
+<view class="company">
+        <image class="pic" mode="aspectFill" src="{{ item.thumb }}"></image>
+        <view class="comp_tit">{{ item['name'] }}</view>
+        <view class="comp_desc"><text class="fa fa-map-marker"></text> 距您{{item['distance']}}公里</view>
+        <!--<view class="comp_desc">小型车 新能源车 大型车</view> --><!-- 大型车 -->
+        <view class="comp_feature">
+        <text wx:for="{{item['advance']}}">{{item}}</text></view>
+                    <view class="tele"><text data-index="{{index}}" class="phonebox"><text class="fa fa-mobile-phone"></text>{{ item['phone'] }}</text></view>
+        <button formType="submit" class="btn-book" type="primary" size="mini">立即预约</button>
+        <!-- <text class="distance">距{{item['distance']}}公里</text> -->
+        <!-- <text class="txt_j">检</text>
+        <text class="txt_l">绿</text> -->
+        <view class="map" data-index="{{index}}"><text class="fa fa-map-marker"></text>{{item['addrtext']}}</view>
+</view>
+</navigator>
+</block>

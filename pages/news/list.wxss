@@ -1,0 +1,10 @@
+/* pages/news/list.wxss */
+.intro{width:750rpx; height:268rpx; background:url(http://dk.zemakeji.com/Data/miniapp/newsbg.jpg); color:#fff; line-height:268rpx; text-align: center;}
+.intro text{background-color:rgba(26,110,60,.8); padding:20rpx; font-size:28rpx;}
+
+.news{padding:20rpx 20rpx 20rpx; margin-top:20rpx; background-color:#fff;}
+.news-tit{font-size:28rpx; border-bottom:2rpx solid #007d40; padding-bottom:10rpx;}
+.news-list{padding-top:10rpx;}
+.news-list view{padding:10rpx 160rpx 10rpx 0;font-size:24rpx; overflow: hidden; text-overflow:ellipsis;white-space: nowrap; position: relative;}
+.news-list text{position:absolute; right:0; top:10rpx;}
+.news-more{font-size:24rpx; text-align: center; border:2rpx solid #007d40; border-radius:5rpx; margin-top:10rpx;}

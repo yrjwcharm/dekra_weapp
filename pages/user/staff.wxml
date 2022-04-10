@@ -1,0 +1,20 @@
+
+        <!--pages/user/staff.wxml-->
+<view class="qbdd mt10" bindtap="viewAbout" wx:if="{{ !(staff_bj_apppower =='noapppower北京')}}" >
+    <navigator url="../book/checkstand?city={{city}}">
+        <span class="font_14 c3">收银台</span>
+        <span class="fl_r c9 font_12 l_h20" hover-class="none"> ></span>
+    </navigator>
+</view>
+<view class="qbdd mt10" bindtap="viewAbout" wx:if="{{city == '北京' &&  (staff_bj_apppower =='apppower北京' )}}">
+    <navigator url="../book/detect?stationId=4">
+        <span class="font_14 c3">预约+收银台</span>
+        <span class="fl_r c9 font_12 l_h20" hover-class="none"> ></span>
+    </navigator>
+</view>
+<view class="qbdd mt10" bindtap="viewAbout" wx:if="{{city == '北京' &&  (staff_bj_apppower =='apppower北京' )}}">
+    <navigator url="../book/redetect?city={{city}}">
+        <span class="font_14 c3">复检下单(北京)</span>
+        <span class="fl_r c9 font_12 l_h20" hover-class="none"> ></span>
+    </navigator>
+</view>

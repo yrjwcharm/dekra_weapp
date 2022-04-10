@@ -1,0 +1,37 @@
+<view class="container">
+  <form bindsubmit="formSubmit" bindreset="formReset">
+   <view class="section">
+      <view class="label">个人积分</view>
+      <text class="text">{{point}}</text>
+    </view>
+  <!-- <view class="section">
+      <view class="label">用户昵称</view>
+      <text class="text">{{nickname}}</text>
+    </view>
+    <view class="section">
+      <view class="label">用户性别</view>
+      <text class="text">{{sex == 1?'男':'女'}}</text>
+    </view> -->
+   <!-- <view class="section">
+      <view class="label">用户积分</view>
+      <text class="text">{{ point }}</text>
+    </view> -->
+   <view class="section">
+      <view class="label">用户姓名</view>
+      <input type="text" name="uname" value="{{ uname }}" />
+    </view>
+    <view class="section">
+      <view class="label">手机号码</view>
+      <input type="number" name="tel" value="{{ tel }}" />
+      <my-phone class="phoneButton" size="mini" type="primary" text="获取手机号" bind:onSuccess="getMobile"></my-phone>
+    </view>
+    <view class="section">
+      <view class="label">身份证号</view>
+      <input type="number" class="idcard" name="idcard" value="{{ idcard }}" />
+    </view>
+    <view class="btn-area">
+      <button class="button" formType="submit">保存资料</button>
+    </view>
+  </form>
+</view>
+<view class="agreement">保存资料即表示阅读并同意<navigator url="../user/agreement"><text>《用户协议》</text></navigator></view>

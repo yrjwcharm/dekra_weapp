@@ -1,0 +1,40 @@
+<!--pages/user/dingdan.wxml-->
+<view class="search_no" wx:if="{{!contentlist.length}}">
+    <view class="font_14"><image class="scimg" src="/images/search_no.png"></image></view>
+    <text>没有可用订单/(ㄒoㄒ)/~~</text>
+</view>
+<view class="shop df" wx:if="{{contentlist.length}}" wx:for="{{contentlist}}" wx:for-item="item" wx:key="content_id">        
+    <view class="df_1">            
+        <view class="sp_text">
+            <view class="sp_tit"><text class="lb">订单号:</text>{{item.ordernum}}</view>
+            <view class="sp_tit"><text class="lb">预约时间：</text>{{item.bookdate}} {{item.booktime}}</view>
+            <view class="sp_tit"><text class="lb">价格：</text>{{item.price}} 元</view>
+     
+            <view class="sp_tit"><text class="lb">车牌：</text>{{item.carnum}}</view>
+          <view class="sp_tit"><text class="lb">订单状态：</text>
+                      <text class="status1" wx:if="{{item.status==0}}">无效订单</text>
+
+            <text class="status1" wx:elif="{{item.status==1}}">已预约</text>
+            <text class="status2" wx:elif="{{item.status==2}}">已付款</text>
+            <text class="status3" wx:elif="{{item.status==3}}">已检测</text>
+            <text class="status4" wx:elif="{{item.status==4}}">退款中</text>
+            <text class="status5" wx:elif="{{item.status==5}}">订单取消</text>
+            <text class="status5" wx:elif="{{item.status==8}}">已退款</text>
+            <text class="status5" wx:elif="{{item.status==9}}">已收银</text>
+            <text class="status3" wx:elif="{{item.status==10}}">已检测</text>
+            <text class="status5" wx:elif="{{item.status==11}}">已退办</text>
+            <text wx:else> 未知错误 </text>
+          </view>
+<view class="btnbox">
+
+  <!-- <navigator wx:if="{{ item.city != '北京' }}" class=" bcancel" url="/pages/question/query?orderId={{item.id}}&siteid={{item.stationid}}"><button type="default" size="mini"> 评价服务 </button></navigator> -->
+  <!-- wx:if="{{ item.city == '北京' }}" -->
+    <button class="bcancel" ontap="jumptominiapp" data-url="{{item.questionnaire}}" data-id="{{item.id}}" data-siteid="{{item.stationid}}" type="default" size="mini"> 评价服务 </button>
+
+            <navigator url="/pages/book/success?id={{item.id}}" class=" bdetail"><button type="primary" size="mini"> 订单详情 </button></navigator>
+                                 
+
+            </view>
+        </view>
+    </view>
+</view>

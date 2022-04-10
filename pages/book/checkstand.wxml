@@ -1,0 +1,354 @@
+<view class="container">
+    <view class="success-tit">
+        <button wx:if="{{ staff_bj_apppower =='apppower北京'}}" class="jumpto" bindtap="jumpto"
+                type="warn" size="mini">返回员工通道</button>车检收银台
+        <button class="clearData" bindtap="clearData" type="default" size="mini">清空数据</button>
+    </view>
+
+    <view class="carnumBox">
+        <input class="hide" name="carnum" value="{{carnum}}"/>
+        <text class="platenumber" placeholder="请输入车牌号" bindtap="handleFocus">{{carnum}}</text>
+        <my-easyocr class="cancel" size="mini" type="primary" bind:onSuccess="driverSuccess" text="行驶证识别"
+                    certificateType="drivingLicense"></my-easyocr>
+
+        <button class="cancel" bindtap="getOrder" data-id="" type="default" size="mini">录入输出</button>
+
+        <plate-number-keyboard show="{{showKeyboard}}" bind:getResult="setNumber"
+                               initValue="{{carnum}}"></plate-number-keyboard>
+
+    </view>
+
+    <view class="timerbox" wx:if="{{ !orderInfos }}">
+        <view class="timer" wx:for="{{contentlist}}" wx:for-item="item" wx:key="content_id">
+            <view class="view-fl">
+                <text wx:if="{{ item.bookdate== nowday }}" class="today"></text>
+                <text>{{item.carnum}}</text>
+                <text class="num">{{item.bookdate}} {{item.booktime}}</text>
+            </view>
+            <button formType="submit" data-carnum="{{item.carnum}}" data-id="{{item.id}}" class="btn-book"
+                    type="primary" size="mini" bindtap="goinputui">收银
+            </button>
+        </view>
+    </view>
+
+
+    <view class="table" wx:if="{{ orderInfos }}">
+        <view class="th">订单类型</view>
+        <view class="td">
+            <text class="status1" wx:if="{{orderInfos.type=='fistpass'}}">初检订单</text>
+            <text class="status2" wx:elif="{{orderInfos.type=='repass'}}">复检订单</text>
+        </view>
+        <view class="th">车牌号</view>
+        <view class="td">{{ orderInfos.carnum }}</view>
+        <view class="th">订单号</view>
+        <view class="td">{{ orderInfos.ordernum }}</view>
+        <view class="th">订单状态</view>
+        <view class="td">
+            <text class="status1" wx:if="{{orderInfos.status==1}}">已预约</text>
+            <text class="status2" wx:elif="{{orderInfos.status==2}}">已付款</text>
+            <text class="status3" wx:elif="{{orderInfos.status==3}}">已确认</text>
+            <text class="status4" wx:elif="{{orderInfos.status==4}}">退款中</text>
+            <text class="status5" wx:elif="{{orderInfos.status==5}}">订单取消</text>
+        </view>
+
+        <view class="th">初付方式</view>
+        <view class="td">{{ orderInfos.paymethod }}</view>
+        <view class="th" wx:if="{{ orderInfos.paymethod == '微信支付'}}">已支付金额</view>
+        <view class="td" wx:if="{{ orderInfos.paymethod == '微信支付'}}">{{ orderInfos.tprice }}</view>
+        <view class="th">订单价格</view>
+        <view class="td">{{ orderInfos.price }}</view>
+
+        <view class="th">车辆类型</view>
+        <view class="td">{{ orderInfos.cartype }}</view>
+        <block wx:if="{{ orderInfos.materialtype}}">
+            <view class="th">动力类型</view>
+            <view class="td">{{ orderInfos.materialtype }}</view>
+        </block>
+        <block wx:if="{{ orderInfos.drivertype}}">
+            <view class="th">四驱类型</view>
+            <view class="td">{{ orderInfos.drivertype }}</view>
+        </block>
+        <block wx:if="{{ orderInfos.city == '北京' }}">
+            <view class="th">联系电话</view>
+            <view class="td">{{ orderInfos.bookmobile }}
+                <button type="warn" bindtap="addMobileBtn" size="mini">
+                    <text class="fa fa-mobile"></text> 新增手机号
+                </button>
+            </view>
+        </block>
+
+    </view>
+
+    <!--   <view class="table">
+        <view class="th">车牌号</view><view class="td">请操作识别行驶证</view>
+       <view class="th">订单号</view><view class="td">请操作识别行驶证</view>
+       <view class="th">支付方式</view><view class="td">请操作识别行驶证</view>
+       <view class="th">已支付金额</view><view class="td">请操作识别行驶证</view>
+       <view class="th">订单原价</view><view class="td">请操作识别行驶证</view>
+       <view class="th">实价(折扣)</view><view class="td">请操作识别行驶证</view>
+
+       <view class="th">车辆类型</view><view class="td">请操作识别行驶证</view>
+
+       <view class="th">动力类型</view><view class="td">请操作识别行驶证</view>
+       <view class="th">四驱类型</view><view class="td">请操作识别行驶证</view>
+       </view>-->
+</view>
+<block wx:if="{{ orderInfos }}">
+    <view class="viewbox">
+        <button type="primary" bindtap="confirmRight" data-statu="open" size="primary">
+            <text class="fa fa-check"></text> 信息无误
+        </button>
+    </view>
+    <view class="viewbox" wx:if="{{orderInfos.type=='fistpass'}}">
+        <button bindtap="confirmError" data-statu="open" type="warn" size="primary">
+            <text class="fa fa-warning"></text> 信息有误
+        </button>
+    </view>
+
+    <view class="viewbox" wx:if="{{orderInfos.type=='fistpass'}}">
+        <button bindtap="confirmDownVip" data-statu="open" type="default" size="primary">
+            <text class="fa fa-warning"></text> 线下大客户
+        </button>
+    </view>
+</block>
+        <!--  -->
+        <!--mask-->
+<view class="drawer_screen" bindtap="closeMobileBtn" data-statu="close" wx:if="{{showMobileStatus}}"></view>
+        <!--content-->
+        <!--使用animation属性指定需要执行的动画-->
+<view class="drawer_box" wx:if="{{showMobileStatus}}">
+    <form bindsubmit="addMobile" bindreset="formReset">
+        <!--drawer content-->
+        <view class="drawer_title">新增手机号</view>
+        <view class="drawer_content">
+            <view class="top grid">
+                <label class="title">通知手机号</label>
+                <view class="hprice">
+                    <input class="ipt" placeholder='请输入用于接收短信的手机号' name="mobile" type="digit"/>
+                </view>
+            </view>
+
+            <view class="hprice">.</view>
+        </view>
+
+        <button class="btn_ok2" formType="submit">确定</button>
+
+    </form>
+</view>
+        <!--mask-->
+<view class="drawer_screen" bindtap="confirmError" data-statu="close" wx:if="{{showConfirmErrorStatus}}"></view>
+        <!--content-->
+        <!--使用animation属性指定需要执行的动画-->
+<view class="drawer_box" wx:if="{{showConfirmErrorStatus}}">
+    <form bindsubmit="doConfirmError" bindreset="formReset">
+        <!--drawer content-->
+        <view class="drawer_title">订单修正并确认</view>
+        <view class="drawer_content">
+            <view class="top grid">
+                <label class="title col-0">车辆类型</label>
+                <scroll-view scroll-x="true" style="width:100%;white-space: nowrap; display: inline-block;">
+                    <radio-group class="radio-group" name="carType" bindchange="carTypeRange">
+                        <label class="radio" wx:for="{{carType}}">
+                            <radio class="radioin" data-name="{{item.name}}" value="{{item.value}}"
+                                   checked="{{item.checked}}"/>{{item.name}}
+                        </label>
+                    </radio-group>
+                </scroll-view>
+            </view>
+            <view class="top grid">
+                <label class="title col-0">动力类型</label>
+                <scroll-view scroll-x="true" style="width:100%;white-space: nowrap; display: inline-block;">
+
+                    <radio-group class="radio-group" name="oilType" bindchange="oilTypeRange">
+                        <label class="radio" wx:for="{{oilType}}">
+                            <radio class="radioin" value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
+                        </label>
+                    </radio-group>
+                </scroll-view>
+            </view>
+            <view class="top grid" wx:if="{{notMotorCycle}}">
+                <label class="title col-0">四驱类型</label>
+                <radio-group class="radio-group" name="quattroType" bindchange="quattroTypeRange">
+                    <label class="radio" wx:for="{{quattroType}}">
+                        <radio class="radioin" value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
+                    </label>
+                </radio-group>
+            </view>
+            <view class="top grid" wx:if="{{ orderInfos.city == '深圳'}}">
+                <label class="title">附加费用(元)</label>
+                <view class="hprice">
+                    <input class="ipt ipt_m" placeholder='请输入附加费用金额' name="exfee" type="digit" value="{{exfee}}"
+                           bindinput='watchExfee'/>
+                </view>
+            </view>
+            <view class="top grid">
+                <label class="title col-0">补退方式</label>
+                <radio-group class="radio-group" name="payType" bindchange="tuihuanRange">
+                    <label class="radio" wx:for="{{payType}}">
+                        <radio class="radioin" value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
+                    </label>
+                </radio-group>
+            </view>
+            <view class="top grid">
+                <label class="title" wx:if="{{ modifyPrice > 0 }}">用户需向收银台支付（元）</label>
+                <label class="title" wx:if="{{ modifyPrice < 0 || modifyPrice == 0 }}">收银台需向用户退款</label>
+                <view class="hprice">{{ modifyPrice}}</view>
+            </view>
+
+        </view>
+        <button class="btn_ewm" bindtap="createEwm" data-type="type1" data-price="{{modifyPrice}}"
+                data-orderid="{{ orderInfos.ordernum }}">生成收款二维码
+        </button>
+        <button class="btn_ok" formType="submit">支付完成与确认订单完成</button>
+        <!--    <button class="btn_ok2" wx:if="{{ orderInfos.city == '深圳'}}" formType="submit">确定</button>-->
+    </form>
+</view>
+
+
+        <!--mask-->
+<view class="drawer_screen" bindtap="confirmDownVip" data-statu="close" wx:if="{{showConfirmDownVipStatus}}"></view>
+        <!--content-->
+        <!--使用animation属性指定需要执行的动画-->
+<view class="drawer_box" wx:if="{{showConfirmDownVipStatus}}">
+    <form bindsubmit="doconfirmDownVip" bindreset="formReset">
+        <!--drawer content-->
+        <view class="drawer_title">线下大客户确认</view>
+        <view class="drawer_content">
+            <view class="top grid">
+                <label class="title col-0">线下大客户类型</label>
+                <scroll-view scroll-x="true" style="width:100%;white-space: nowrap; display: inline-block;">
+                    <radio-group class="radio-group" name="downVipType" bindchange="downVipTypeRange">
+                        <label class="radio" wx:for="{{downVipType}}">
+                            <radio class="radioin" value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
+                        </label>
+                    </radio-group>
+                </scroll-view>
+            </view>
+
+            <view class="top grid">
+                <text class="title col-0 bottom">协议价身份</text>
+
+                <picker bindchange="bindDealCompany" value="{{dealCompanyIndex}}" range="{{dealCompany}}">
+                    <view class="picker">
+                        当前选择：{{dealCompany[dealCompanyIndex]}}
+                    </view>
+                </picker>
+
+            </view>
+
+            <view class="top grid">
+                <text class="title _top">车辆类型</text>
+                <scroll-view scroll-x="true" style="width:100%;white-space: nowrap; display: inline-block;">
+
+                    <radio-group class="radio-group" name="carType" bindchange="carTypeRangeDown">
+                        <label class="radio" wx:for="{{carType}}">
+                            <radio class="radioin" value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
+                        </label>
+                    </radio-group>
+                </scroll-view>
+            </view>
+            <view class="top grid">
+                <label class="title col-0">动力类型</label>
+                <scroll-view scroll-x="true" style="width:100%;white-space: nowrap; display: inline-block;">
+
+                    <radio-group class="radio-group" name="oilType" bindchange="oilTypeRangeDown">
+                        <label class="radio" wx:for="{{oilType}}">
+                            <radio class="radioin" value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
+                        </label>
+                    </radio-group>
+                </scroll-view>
+            </view>
+            <view class="top grid" wx:if="{{notMotorCycle}}">
+                <label class="title col-0">四驱类型</label>
+                <radio-group class="radio-group" name="quattroType" bindchange="quattroTypeRangeDown">
+                    <label class="radio" wx:for="{{quattroType}}">
+                        <radio class="radioin" value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
+                    </label>
+                </radio-group>
+            </view>
+
+            <view class="top grid">
+                <label class="title col-0">支付方式</label>
+                <radio-group class="radio-group" name="payType" bindchange="tuihuanRangeDown">
+                    <label class="radio" wx:for="{{payTypeVip}}"
+                           wx:if="{{ !(curDownVipType == '销售员工' && item.value =='月结')}}" wx:for-index="idx">
+                        <radio class="radioin" value="{{item.value}}"
+                               checked="{{idx == 0 || (curDownVipType == '销售员工'&& idx == 1) }}"/>{{item.name}}
+                    </label>
+                </radio-group>
+            </view>
+
+            <view class="top grid" wx:if="{{ orderInfos.city == '深圳'}}">
+                <label class="title">附加费用(元)</label>
+                <view class="hprice">
+                    <input class="ipt ipt_m" placeholder='请输入附加费用金额' name="exfee" type="digit" value="{{exfee}}"
+                           bindinput='watchExfeeDown'/>
+                </view>
+            </view>
+            <view class="top grid">
+                <label class="title">备注：</label>
+                <view class="section">
+                    <input placeholder="请录入备注信息" class="remark-input" placeholder-class="placeholder-class"
+                           bindinput="remarkInput" name="textarea"/>
+                </view>
+            </view>
+            <view class="top grid">
+                <label class="title">用户需向收银台支付</label>
+                <view class="mtotalpricebox">
+                    <text class="hprice" wx:if="{{isinput != 1}}">{{ modifyPrice}}</text>
+                    <input wx:if="{{isinput == 1}}" class="ipt ipt_m" placeholder='请输入调整总价后的总价'
+                           name="modifyPrice" type="digit" value="{{ modifyPrice}}" bindinput='watchmodifyPriceDown'/>
+                </view>
+            </view>
+            <button class="btn_ewm" bindtap="createEwm" data-type="type2" data-price="{{modifyPrice}}"
+                    data-orderid="{{ orderInfos.ordernum }}">生成收款二维码
+            </button>
+            <button class="btn_ok" formType="submit">支付完成与确认订单完成</button>
+        </view>
+        <!--    <button class="btn_ok2" wx:if="{{ orderInfos.city == '深圳'}}" formType="submit">确定</button>-->
+    </form>
+</view>
+
+        <!--mask-->
+<view class="drawer_screen" bindtap="confirmRightDown" data-statu="close" wx:if="{{showConfirmDownStatus}}"></view>
+        <!--content-->
+        <!--使用animation属性指定需要执行的动画-->
+<view class="drawer_box" wx:if="{{showConfirmDownStatus}}">
+    <form bindsubmit="doConfirmRightDown" bindreset="formReset">
+        <!--drawer content-->
+        <view class="drawer_title">订单收款方式确认</view>
+        <view class="drawer_content">
+            <view class="top grid">
+                <label class="title col-0">收款方式</label>
+                <radio-group class="radio-group" name="payType" name="payType" bindchange="payTypeRange">
+                    <label class="radio" wx:for="{{payType}}">
+                        <radio class="radioin" value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
+                    </label>
+                </radio-group>
+                <label class="title col-0">收款金额</label>
+                <text>{{ orderInfos.price }}</text>
+                <!-- <picker bindchange="bindPickerChange" value="{{index4}}" range="{{array4}}">
+               <view class="picker">
+                 {{array4[index3]}}
+               </view>
+
+             </picker> -->
+            </view>
+        </view>
+        <button class="btn_ewm" bindtap="createEwm" data-type="type3" data-price="{{orderInfos.price}}"
+                data-orderid="{{ orderInfos.ordernum }}">生成收款二维码
+        </button>
+        <button class="btn_ok" formType="submit">支付完成与确认订单完成</button>
+        <!--    <button class="btn_ok2" wx:if="{{ orderInfos.city == '深圳'}}" formType="submit">确定</button>-->
+    </form>
+</view>
+
+
+<view wx:if='{{ewmStatus}}' bindtap="hideEwm">
+    <view class='mask_layer'/>
+    <view class='modal_box'>
+        <view class="ttle">收银二维码</view>
+        <canvas class="canvas-code" canvas-id="mycanvas"/>
+    </view>
+</view>
+

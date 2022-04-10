@@ -1,0 +1,1 @@
+<button type="{{type}}" size="{{size}}" class="{{class}}" bindtap="ocrAction">{{text}}</button>

@@ -1,0 +1,208 @@
+<!--inputui.wxml-->
+<view class="container">
+    <view class="tips_warn">
+        <icon type="warn" size="18" color="#f35757"/>
+        温馨提示:如有违章未处理,请先处理违章再办理年审业务。大（重）型车辆请致电检测场进行预约，预约电话({{options.phone}})。
+    </view>
+    <form bindsubmit="formSubmit" bindreset="formReset" report-submit="true">
+        <view class="booking">
+            <view class="infos">
+                <view class="name">{{options.name}}</view>
+                <view class="desc"><text class="fa fa-newspaper-o"></text>上线年检
+                </view>
+                <view class="desc"><text class="fa fa-calendar-times-o"></text>{{appointmentDate}} {{appointmentTime}}
+                </view>
+            </view>
+            <view class="carinfobox">
+                <view class="row">
+                    <text class="fa fa-car"></text>
+                    <!--                    <text class="platenumber" name="carnum" placeholder="请输入车牌号" bindtap="handleFocus">{{carnum}}</text>-->
+                    <input placeholder="请输入车牌号" disabled class="ipt ipt_ll" name="carnum" bindtap="handleFocus"
+                           value="{{carnum}}" type="text"/>
+                    <plate-number-keyboard show="{{showKeyboard}}" bind:getResult="setNumber"
+                                           initValue="{{carnum}}"></plate-number-keyboard>
+                    <ocr-navigator bind:onSuccess="driverSuccess" certificateType="drivingLicense"
+                                   selectedOptions="{{['plateNum','vehicleType','owner']}}">
+                        <button class="onekey" type="primary"><text class="fa fa fa-camera"></text>行驶证拍照识别
+                        </button>
+                    </ocr-navigator>
+                </view>
+                <view class="row">
+                    <text class="fa fa-calculator"></text>
+                    <input class="ipt ipt_m" placeholder='请输入完整发动机编号' value="{{fadongji}}" name="fadongji" type="text"/>
+                </view>
+
+                <!-- <view class="row">
+                  <text  class="fa fa-calculator"></text><input class="ipt ipt_ll" placeholder='请输入完整车架号'  value="{{framenumber}}" name="frameNumber" type="text" />
+                </view> -->
+                <view class="row">
+                    <text class="fa fa-calendar"></text>
+                    <picker class="mpicker" mode="date" name="dldate" value="{{dldate}}" bindchange="bindDateChange">
+                        <view class="mapicker" style="color:{{scolor}}">
+                            {{dldate}}
+                        </view>
+                    </picker>
+                </view>
+                <view class="row">
+                    <text class="fa fa-eye"></text>
+                    <radio-group class="radio-group" bindchange="useCharacterRange" name="carUseType">
+                        <label class="radio" wx:for="{{useCharacter}}">
+                            <radio class="radioin" value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
+                        </label>
+                    </radio-group>
+                </view>
+            </view>
+
+
+            <view class="carinfobox">
+                <view class="row">
+                    <text class="fa fa-eye"></text>
+                    <radio-group class="radio-group" bindchange="carClassRange" name="carClass">
+                        <label class="radio" wx:for="{{carClass}}">
+                            <radio class="radioin" value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
+                        </label>
+                    </radio-group>
+                </view>
+                <view class="row">
+
+                    <text class="fa fa-eye"></text>
+                    <radio-group wx:if="{{carClassCur == '客车'}}" class="radio-group" bindchange="carTypeRange"
+                                 name="carType">
+                        <label class="radio" wx:for="{{carType1}}">
+                            <radio class="radioin" value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
+                        </label>
+                    </radio-group>
+                    <radio-group wx:if="{{carClassCur == '货车'}}" class="radio-group" bindchange="carTypeRange"
+                                 name="carType">
+                        <label class="radio" wx:for="{{carType2}}">
+                            <radio class="radioin" value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
+                        </label>
+                    </radio-group>
+                    <scroll-view scroll-x="true" style="width:100%;white-space: nowrap; display: inline-block;">
+                        <radio-group wx:if="{{carClassCur == '摩托车'}}" class="radio-group" bindchange="carTypeRange"
+                                     name="carType">
+                            <label class="radio" wx:for="{{carType3}}">
+                                <radio class="radioin" value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
+                            </label>
+                        </radio-group>
+                    </scroll-view>
+                </view>
+
+                <view class="row">
+                    <text class="fa fa-cogs"></text>
+                    <scroll-view scroll-x="true" style="width:100%;white-space: nowrap; display: inline-block;">
+                        <radio-group class="radio-group" bindchange="oilTypeRange" name="oilType">
+                            <label class="radio" wx:for="{{oilType}}">
+                                <radio class="radioin" value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
+                            </label>
+                        </radio-group>
+                    </scroll-view>
+                </view>
+
+
+                <view class="row" hidden="{{carClassCur !== '客车'}}">
+                    <text class="fa fa-cogs"></text>
+                    <radio-group class="radio-group" bindchange="quattroTypeRange" name="quattroType">
+                        <label class="radio" wx:for="{{quattroType}}">
+                            <radio class="radioin" value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
+                        </label>
+                    </radio-group>
+                </view>
+
+
+            </view>
+
+            <view class="carinfobox">
+
+                <!-- <view class="row"><text class="fa fa-tag"></text>
+                  <radio-group class="radio-group" bindchange="radioChange" name="bookType">
+                <label class="radio" wx:for="{{worktype}}">
+                  <radio class="radioin" value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
+                </label>
+                </radio-group>
+              </view> -->
+                <view class="row" wx:if="{{curWorktype == 'SELF'}}">
+                    <text class="fa fa-user-o"></text>
+                    <input id="formid" class="ipt" name="name" value="{{name}}"
+                           placeholder='请输入办理人姓名' type="text"/>
+                </view>
+                <view class="row" wx:if="{{curWorktype == 'SELF'}}">
+                    <text class="fa fa-mobile"></text>
+                    <input class="ipt" name="mobile" placeholder='请输入办理人手机号码' type="number" value="{{mobile}}"/>
+                    <my-phone wx:if="{{curWorktype == 'SELF'}}" class="phoneButton" size="mini" type="primary"
+                              text="获取手机号" bind:onSuccess="getMobile"></my-phone>
+                </view>
+                <view class="row" wx:if="{{curWorktype == 'AGENT'}}">
+                    <text class="fa fa-user-o"></text>
+                    <input id="formid" class="ipt" name="name" value="{{}}"
+                           placeholder='请输入车主姓名' type="text"/>
+                </view>
+                <view class="row" wx:if="{{curWorktype == 'AGENT'}}">
+                    <text class="fa fa-mobile"></text>
+                    <input class="ipt" name="mobile" placeholder='请输入车主手机号码' type="number" value="{{}}"/>
+                    <my-phone wx:if="{{curWorktype == 'SELF'}}" class="phoneButton" size="mini" type="primary"
+                              text="获取手机号" bind:onSuccess="getMobile"></my-phone>
+                </view>
+                <view class="row" wx:if="{{curWorktype == 'AGENT'}}">
+                    <text class="fa fa-user-o"></text>
+                    <input class="ipt" name="agentName" value="{{ agentbookName }}" placeholder='请输入代理人姓名' type="text"/>
+                </view>
+                <view class="row" wx:if="{{curWorktype == 'AGENT'}}">
+                    <text class="fa fa-id-card-o"></text>
+                    <input class="ipt" name="agentMobile" placeholder='请输入代理人手机号' type="idcard"
+                           value="{{agentmobile}}"/>
+                    <my-phone class="phoneButton" size="mini" type="primary" text="获取手机号"
+                              bind:onSuccess="getMobileAgent"></my-phone>
+                </view>
+
+
+            </view>
+
+            <view class="intro-tit">年检所需材料</view>
+            <view class="intro-list">
+                <view class="advance">行驶证<text><text class="fa fa-drivers-license"></text>原件</text>
+                </view>
+                <view class="advance">交强险保险单<text><text class="fa fa-envelope"></text>有效期内</text>
+                </view>
+                <view class="advance">身份证(个人)<text><text class="fa fa-id-card"></text>原件</text>
+                </view>
+                <block>
+                </block>
+            </view>
+            <view class="agreement">点击立即下单即表示阅读并同意
+                <navigator url="../user/agreement">
+                    <text>《用户协议》</text>
+                </navigator>
+            </view>
+        </view>
+
+
+        <view class="costbar">
+            <view class="cost_detail" wx:if="{{iscostdetail}}">
+                <view class="cost_detail_hd">费用明细
+                    <text bindtap="costDetailClose">关闭</text>
+                </view>
+                <view class="cost_detail_item">年检检测费(折扣价)<text>¥ {{ feeArray.nPrice ? feeArray.nPrice : feeArray.oPrice
+                    }}</text>
+                </view>
+                <!-- <view class="cost_detail_item">线上支付优惠 <text>¥ -{{ feeArray.pDiscount }}</text></view> -->
+                <view wx:if="{{feeArray.iDiscount > 0}}" class="cost_detail_item">邀请预约优惠
+                    <text>¥ -{{ feeArray.iDiscount }}</text>
+                </view>
+                <view wx:if="{{feeArray.tDiscount > 0}}" c class="cost_detail_item">时段预约优惠
+                    <text>¥ -{{ feeArray.tDiscount }}</text>
+                </view>
+                <view wx:if="{{feeArray.dDiscount > 0}}" class="cost_detail_item">代金券 抵扣
+                    <text>¥ -{{ feeArray.dDiscount }}</text>
+                </view>
+            </view>
+            <view class="cost_price">
+                <view class="costnum" bindtap="costDetailOpen">¥
+                    {{(feeArray.oPrice) - (feeArray.dDiscount) - (feeArray.iDiscount) - (feeArray.tDiscount) > 0 ? (feeArray.oPrice) - (feeArray.dDiscount) - (feeArray.iDiscount) - (feeArray.tDiscount) : 0}}
+                    <text class="fa fa-angle-up"></text><text class="tp">优惠明细</text>
+                </view>
+                <button class="submit" formType="submit">立即预约</button>
+            </view>
+        </view>
+    </form>
+</view>

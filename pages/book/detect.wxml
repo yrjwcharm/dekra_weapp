@@ -1,0 +1,144 @@
+<!--index.wxml-->
+<view class="container">
+    <swiper class="swiper_container" wx:if="{{notices.length!==0}}" vertical="true" autoplay="true" circular="true" interval="2000">
+        <block wx:for="{{notices}}" wx:key="index" >
+            <swiper-item>
+                <navigator url="/pages/notice-detail/index?id={{notices[index].id}}">
+                    <view class="swiper_item">
+                        <text wx:if="{{notices[index].title}}" class="fa fa-bell"></text>
+                        <rich-text wx:if="{{notices[index].title}}" nodes="{{notices[index].title}}"></rich-text>
+                    </view>
+                </navigator>
+            </swiper-item>
+        </block>
+    </swiper>
+    <view class="company">
+        <image class="pic" mode="aspectFill" src="{{curStation['thumb']}}"></image>
+        <view class="comp_tit">{{ curStation['name'] }}</view>
+        <view class="comp_desc">{{cartype}}</view>
+        <!--<view class="comp_desc">小型车 新能源车 大型车</view> --><!-- 大型车 -->
+        <view class="comp_feature">
+            <text wx:for="{{curStation['advance']}}">{{item}}</text>
+        </view>
+        <view class="tele">
+            <text data-index="{{curStation['phone']}}" class="phonebox"><text
+                    class="fa fa-mobile-phone"></text>{{ curStation['phone'] }}</text>
+        </view>
+        <!-- <text class="distance">距{{item['distance']}}公里</text> -->
+        <view class="info_desc">
+            <view class="mapbox">
+                <view bindtap="location" data-index="{{curStation['latitude']}}_{{curStation['longitude']}}">
+                    <text class="fa fa-map-marker"></text>
+                    {{curStation['addrtext']}}
+                </view>
+            </view>
+            <view class="phoneboxi" data-index="{{curStation['phone']}}" bindtap='phonecallevent'>
+                <text class="fa fa-phone"></text>
+            </view>
+        </view>
+        <view class="signKefu" data-index="{{curStation['phone']}}" bindtap='phonecallevent'>客服</view>
+        <button class="signHaibao" type="default" size="default" open-type="getUserInfo"
+                bindgetuserinfo="bindGetUserInfo">
+            <text>海报</text><text class="fa fa-tasks"></text>
+        </button>
+    </view>
+    <view class="tab">
+        <view class="tab-head" bindtap="tabFun">
+            <view class="{{tabArr.curHdIndex=='0'? 'active' : ''}}" id="tab-hd00" data-id="0">时段预约</view>
+            <view class="{{tabArr.curHdIndex=='1'? 'active' : ''}}" id="tab-hd01" data-id="1">收费标准</view>
+            <view class="{{tabArr.curHdIndex=='2'? 'active' : ''}}" id="tab-hd02" data-id="2">服务说明</view>
+            <view class="{{tabArr.curHdIndex=='3'? 'active' : ''}}" id="tab-hd03" data-id="3">协议说明</view>
+        </view>
+        <view class="tab-body">
+            <view class="right-item {{tabArr.curBdIndex=='0'? 'active' : ''}}">
+                <view class="dataitem" wx:for="{{timerData}}" wx:for-item="item" wx:for-index="index"
+                      wx:if="{{ !(item.appointDate== nowday && nowtime > nearlyDayEnd ) }}">
+                    <view class="date">
+                        <text class="fa fa-clock-o"></text> {{item.appointDate}}
+                    </view>
+                    <view class="timerbox">
+
+                        <view class="timer" wx:for="{{item.appointTimes}}" wx:for-item="itemin" wx:for-index="indexin">
+                            时间: {{itemin.appointTime}} 剩余: <text
+                                class="num">{{itemin.maxNumber - itemin.yetNumber > 0 ? itemin.maxNumber - itemin.yetNumber : 0}}</text>个
+                            <form bindsubmit="formidSubmit" report-submit="true">
+                                <button formType="submit" data-appointDate="{{item.appointDate}}"
+                                        data-appointTime="{{itemin.appointTime}}" class="btn-book" type="primary"
+                                        size="mini" bindtap="goinputui"
+                                        wx:if="{{isAdmin || ( (nowtime < itemin.getTime ) && (itemin.maxNumber-itemin.yetNumber >0) ) }}">
+                                    预约
+                                </button>
+                            </form>
+
+                        </view>
+                    </view>
+
+                </view>
+
+            </view>
+            <view class="right-item {{tabArr.curBdIndex=='1'? 'active' : ''}}">
+                <image src="{{ curStation.fee+'?t=1' }}" mode="widthFix"></image>
+            </view>
+            <view class="right-item {{tabArr.curBdIndex=='2'? 'active' : ''}}">
+                <view class="step">在线下单</view>
+                <view class="step_con">
+                    <text>自驾前往</text>
+                </view>
+                <view class="step_con">
+                    <text class="step_title">交接车辆和资料</text>
+                    <view class="step_tip">
+                        <text>按时到达检测</text>
+                        <text wx:if="{{curStation['city'] == '北京'}}">场</text>
+                        <text wx:else>站</text>
+                    </view>
+                </view>
+                <view class="step_con">
+                    <text>休息室休息等候</text>
+                </view>
+                <view class="step">办理年检</view>
+                <view class="step_con">
+                    <text class="step_title">归还车辆 收取资料</text>
+                    <view class="step_tip">
+                        <text>离开检测</text>
+                        <text wx:if="{{curStation['city'] == '北京'}}">场</text>
+                        <text wx:else>站</text>
+                    </view>
+                </view>
+            </view>
+            <view class="right-item {{tabArr.curBdIndex=='3'? 'active' : ''}}">
+                <view class="table-tit">网上协议书</view>
+                <text class="text">一、请如实录入个人及车辆信息，否则不予受理。</text>
+                <text class="text">二、申请人凭手机验证码认证方式进行登录。</text>
+                <text class="text">三、一个手机号每天限预约6笔。</text>
+                <text class="text">四、在选择预约日期和时段时，如系统未能显示，表示该时间段无法预约。</text>
+                <text class="text">五、预约成功后，前往检验机构办理时，未通过检测的，一个月内无需再次预约，可直接前往该检验机构进行复检。</text>
+                <text class="text">六、预约成功后，前往检验机构办理时，如果产生退办，需重新预约，且一个月内只能预约该检验机构。</text>
+                <text class="text">七、如需取消预约，须至少提前一天登录预约系统进行取消。</text>
+                <text class="text">八、非因检验机构原因，申请人未在预约时间到预约检验机构检验，视为失约。</text>
+                <text class="text">九、预约失约累计达到2次及以上，该手机将记入黑名单，半年内无法再进行预约。</text>
+                <text class="text">十、送检机动车如存在明显的漏油、漏水现象，资料不齐，或者轮胎胎面严重磨损影响上线安全的，检验机构可以拒绝该车上线检测，该车的当次预约做作废处理。</text>
+                <view class="table-tit">用户须知</view>
+                <text class="text">*短信验证码适用于大陆的三网用户（移动、联通、电信）。</text>
+                <text class="text">*初次申请，手机号将与预约信息绑定，且不能修改，请准确录入。</text>
+                <text class="text">*短信验证码有效时间为30分钟，请快速办理预约业务，否则需重新获取，</text>
+                <text class="text">*频繁获取短信验证码，会导致手机号被拉入黑名单。</text>
+                <text class="text">*已在公安机关交通管理部门登记的摩托车不需预约。</text>
+            </view>
+        </view>
+    </view>
+</view>
+
+<my-poster id="getPoster" bindmyevent="myEventListener" wallpaperbg="{{ wallpaperbg }}" avatar="{{avatar}}"
+           productpic="{{ poster }}" codeimg="{{ ewmUrl }}" price="" title="{{ title }}" addr="{{ info }}"
+           productname="{{ productname }}" gzhcodeimg="{{gzhEwm}}"></my-poster>
+
+
+<view wx:if='{{showLock.status}}'>
+    <view class='mask_layer'/>
+    <view class='modal_box'>
+        <view class="ttle">信息提示</view>
+        <view class=''>
+            <text class='modalMsg'>{{showLock.msg}}</text>
+        </view>
+    </view>
+</view>

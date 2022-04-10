@@ -1,0 +1,6 @@
+<!--pages/book/pay.wxml-->
+<text>pages/book/pay.wxml</text>
+
+<view> <button type="primary" bindtap="weixinpay1" size="mini">支付测试1</button></view>
+
+<button type="primary" bindtap="weixinpay2" size="mini">支付测试2</button>

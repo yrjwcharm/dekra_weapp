@@ -1,0 +1,214 @@
+page {
+  background: #efeff4;
+}
+
+/* pages/address/address.wxss */
+
+.container {
+  font-size: 14px;
+  background-color: white;
+}
+
+.section {
+  height: 120rpx;
+  border-bottom: 1px lightgrey solid;
+  display: flex;
+  align-items: center;
+  margin: 0 30rpx;
+  font-size:30rpx;
+  position: relative;
+}
+
+.btn-area {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-area button {
+  width: 90%;
+  position: fixed;
+  bottom: 40rpx;
+  color: #fff;
+  background-color: #fc0;
+}
+
+.picker {
+  width: 600rpx;
+  height: 120rpx;
+  line-height:120rpx;
+}
+.ww{
+  width: 250px;
+}
+.picker,.mpicker{display: inline-block; vertical-align: middle; width:10rem;}
+.num-pre{width:75rpx;display:inline-block; vertical-align: }
+.label{text-align: right; width:120rpx; margin-right: 30rpx; display: inline-block; vertical-align: middle; color:#666;}
+ input{display: inline-block; vertical-align: middle; width:300rpx;}
+.text{display: inline-block; vertical-align: middle;}
+.buttonget {
+  background-color: #fff;
+  display: inline-block;
+  font-size: 26rpx;
+  color: rgb(136,
+136, 136);
+  border: 1px
+solid #888;
+  border-radius: 10rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+}
+
+.agreement{position:relative; line-height: 1; margin-top:20rpx; padding:10rpx 40rpx 20rpx; font-size:24rpx; color:#666; margin-top: 20rpx;}
+.agreement text{color:green;}
+.agreement navigator{display: inline;}
+
+.text{background-color:#eee; display: block; padding:0 20rpx;}
+
+
+
+/* pages/user/dingdan.wxss */ 
+.on{ 
+  color: #dd2727;  
+  border-bottom: 5rpx solid #dd2727;
+  }  
+  
+.swiper-box{ 
+  display: block; 
+  height: 100%; 
+  width: 100%; 
+  overflow: hidden; 
+  }  
+
+.clearbutton{
+    background: #fff; 
+    display: inline-block;
+    margin:3% 3% 2% 3%; 
+    color: #dd2727;
+    font-size: 14px;
+    width: 94%;
+}
+.shop{
+    background: #fff;
+    padding: 4%;
+    border:1px solid #ddd;
+}
+.shop checkbox{ 
+    margin-top: 27px;
+    }
+.sh_slt{
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    border-radius: 5px;
+    margin-right: 4%;
+    float: left;
+}
+
+.sp_tit,
+.sp_text{
+    width: 100%;
+    overflow: hidden;
+    font-size: 14px;
+}
+.sp_tit .lb{text-align: left; width:180rpx; display: inline-block; }
+.sp_neb{
+    width: 100%;
+    overflow: hidden;
+    font-size: 12px;
+    color: #999;
+}
+.sp_jg{
+    width: 100%;
+    overflow: hidden;
+    font-size: 14px;
+    color: #fc0628;
+}
+.dle{
+    color: #999;
+    font-size: 12px;
+    float: right;
+}
+.dle image{
+    width: 18px;
+    height: 18px;
+    vertical-align: sub;
+}
+.jk_bottom{
+    position: fixed;
+    bottom: 0;
+    background: #fff;
+    width: 100%; 
+    display: inline-flex;
+    border-bottom: 1px solid #eee; 
+    font-size: 14px;
+    color: #999;       
+}
+.jk_bottom checkbox{
+    margin: 4% 0 4% 4%;    
+}
+.jk_bottom .heji{
+    margin-top: 5.5%;
+    width: 30%; 
+    text-align: right;   
+}
+.jk_bottom .all{
+    margin-top: 5.5%;
+    padding-left: 2%;  
+}
+.jk_bottom .js_button{
+    background: #dd2727;
+    float: right;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    width: 40%;
+    position: absolute;
+    right: 0;
+    line-height: 50px;
+}
+.c_t60{
+    clear: both;
+    height: 1px;
+    padding-top: 48px;
+}
+.blue{
+  color: #42b1ff;
+}
+.mr_5{
+    margin-right: 5px;
+}
+.btnbox{overflow:hidden;text-align:right;position:absolute;top:60rpx;right:20rpx;}
+.bdetail,.bcancel{ display: block;}
+.bcancel{ color:#ccc; margin-bottom:20rpx;}
+
+.status1{color:green;}
+.status2{color:yellow;}
+.status3{color:#42b1ff;}
+.status4{color:red;}
+.status5{color:gray;}
+
+.search_no{padding-bottom:20rpx;}
+
+/* 
+.status4,
+.status5{color:#999;}
+
+.status1{color:red;}
+
+.status2,
+.status3{color:green;} */
+
+
+.inviateBox{position:fixed; left:0; right:0; top:0; bottom:0; z-index: 9; background:rgba(0,0,0,.8);}
+.inviateBox image{width:400rpx; height:400rpx;}
+.saveImage{margin-top:50rpx;}
+.weui-btn{margin-top:30rpx;}
+
+
+
+.btns{position: fixed; left:0; right:0; bottom:0; overflow:hidden; background-color:green; border-top:2rpx solid #ddd; border-bottom:2rpx solid #ddd; height:80rpx;}
+.btns button{float:left; width:50%; border-radius:0; background:none; color:#fff; border:none;-webkit-appearance: none; height:80rpx;}
+.btns .n1{border-right:2rpx solid #ddd;}
+.btns button::after {border: none;}
+
+.isHidden{overflow: hidden; height:100%; position: absolute; top:0; bottom:0; left:0; right:0;}

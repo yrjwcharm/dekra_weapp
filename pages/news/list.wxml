@@ -1,0 +1,16 @@
+<!--pages/news/list.wxml-->
+<view class="intro"><text>资讯中心</text></view>
+  <view class="news">
+    <view class="news-tit">新闻列表</view>
+    <view class="news-list">
+      <view>DEKRA德凯完成全球首个小型电动滑板车eKFV法规认证测试项目<text>2019-07-16</text></view>
+      <view>DEKRA德凯完成全球首个小型电动滑板车eKFV法规认证测试项目<text>2019-07-16</text></view>
+      <view>小型电动滑板车eKFV法规认证测试项目<text>2019-07-16</text></view>
+      <view>DEKRA德凯eKFV法规认证测试项目<text>2019-07-16</text></view>
+      <view>DEKRA德凯完成全球首个小试项目<text>2019-07-16</text></view>
+      <view>DEKRA德凯完成全球首个小目<text>2019-07-16</text></view>
+      <view>DEKRA德凯完成全球首个小目<text>2019-07-16</text></view>
+      <view>DEKRA德凯完成全球首个小目<text>2019-07-16</text></view>
+    </view>
+    <view class="news-more">查看更多 >> </view>
+  </view>

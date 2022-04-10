@@ -1,0 +1,18 @@
+/* pages/user/comment.wxss */
+/**index.wxss**/
+.star-image{
+  position: absolute;
+  top: 50rpx;
+  margin-left: 100rpx;
+  width: 100rpx;
+  height: 100rpx;
+  src: "../../images/no-star.png";
+}
+.item{
+  position: absolute;
+  top: 50rpx;
+  width: 100rpx;
+  height: 100rpx;
+}
+.textarea{border:1rpx solid #ddd; display: block; margin:200rpx 30rpx 0; width:auto; padding:10rpx;}
+.btn{margin:20rpx 30rpx 0;}

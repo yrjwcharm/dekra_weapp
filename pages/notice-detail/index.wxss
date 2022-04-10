@@ -1,0 +1,90 @@
+/* pages/news/detail.wxss */
+@import "/wxParse/wxParse.wxss";
+
+.intro {
+    width: 750rpx;
+    height: 350rpx;
+    color: #fff;
+    background-size: cover !important;
+    background-repeat: no-repeat;
+    line-height: 350rpx;
+    text-align: center;
+}
+
+.intro text {
+    background-color: rgba(26, 110, 60, .8);
+    padding: 20rpx;
+    font-size: 28rpx;
+}
+
+.news {
+    padding: 20rpx 20rpx 20rpx;
+    margin-top: 20rpx;
+    background-color: #fff;
+}
+
+.news-tit {
+    font-size: 28rpx;
+    border-bottom: 2rpx solid #007d40;
+    padding-bottom: 10rpx;
+}
+
+.news-cont {
+    font-size: 24rpx;
+    padding: 20rpx 0 80rpx;
+}
+
+/* .news-cont .wxParse-p{margin-bottom:20rpx;} */
+
+.news-title {
+    color: #007d40;
+    font-size: 28rpx;
+    font-weight: bold;
+    padding: 20rpx 0 10rpx;
+}
+
+.news-time {
+    color: #999;
+    font-size: 24rpx;
+}
+
+.btns {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    background-color: #fff;
+    border-top: 2rpx solid #ddd;
+    border-bottom: 2rpx solid #ddd;
+    height: 80rpx;
+}
+
+.btns button {
+    float: left;
+    width: 50%;
+    border-radius: 0;
+    background: none;
+    color: #000;
+    border: none;
+    -webkit-appearance: none;
+    height: 80rpx;
+}
+
+.btns .n1 {
+    border-right: 2rpx solid #ddd;
+}
+
+.btns button::after {
+    border: none;
+}
+
+.isHidden {
+    overflow: hidden;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}

@@ -1,0 +1,122 @@
+{
+  "cloudfunctionRoot": "functions/",
+  "description": "项目配置文件",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "newFeature": true,
+    "coverView": true,
+    "nodeModules": false,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "uglifyFileName": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "compileHotReLoad": false,
+    "useMultiFrameRuntime": true,
+    "useApiHook": true,
+    "useApiHostProcess": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "enableEngineNative": false,
+    "bundle": false,
+    "useIsolateContext": true,
+    "useCompilerModule": false,
+    "userConfirmedUseCompilerModuleSwitch": false,
+    "userConfirmedBundleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.7.1",
+  "appid": "wx3cda15bb25426b7f",
+  "projectname": "dk-miniapp",
+  "debugOptions": {
+    "hidedInDevtools": []
+  },
+  "isGameTourist": false,
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
+  "condition": {
+    "search": {
+      "list": []
+    },
+    "conversation": {
+      "list": []
+    },
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "currentL": -1,
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": 0,
+          "name": "被邀人固定减扣",
+          "pathName": "pages/index/index",
+          "query": "scene=inviate-1-SZ",
+          "scene": 1011
+        },
+        {
+          "id": 1,
+          "name": "线上代金券减扣",
+          "pathName": "pages/index/index",
+          "query": "scene=voucher-610a55c86e129-BJ",
+          "scene": null
+        },
+        {
+          "id": 2,
+          "name": "公司大客户（线上）",
+          "pathName": "pages/index/index",
+          "query": "scene=cvip-5d4295a5db2dd-SZ",
+          "scene": null
+        },
+        {
+          "id": 3,
+          "name": "合作商户（线上）",
+          "pathName": "pages/index/index",
+          "query": "scene=cshop-5d42fb47581b9-SZ",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "线下转换(无折扣码)",
+          "pathName": "pages/index/index",
+          "query": "scene=store-5d42fb7ac0ccb-SZ",
+          "scene": null
+        },
+        {
+          "id": 5,
+          "name": "合作商户（线上）【管理员】",
+          "pathName": "pages/index/index",
+          "query": "scene=cshopmt-5d627b4e6c4d2-SZ",
+          "scene": null
+        },
+        {
+          "id": 6,
+          "name": "深圳代金券",
+          "pathName": "pages/index/index",
+          "query": "scene=Voucher-5d5eb73534832-SZ",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

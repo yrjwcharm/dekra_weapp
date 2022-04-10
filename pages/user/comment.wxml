@@ -1,0 +1,15 @@
+<!--pages/user/comment.wxml-->
+<view class="section">
+    <block wx:for="{{stars}}">
+      <image class="star-image" style="left: {{item*100}}rpx" src="{{key > item ?(key-item == 0.5?halfSrc:selectedSrc) : normalSrc}}">
+        <view class="item" style="left:0rpx" data-key="{{item+0.5}}" bindtap="selectLeft"></view>
+        <view class="item" style="left:50rpx" data-key="{{item+1}}" bindtap="selectRight"></view>
+      </image>
+    </block>
+    <view class="section">
+      <textarea class="textarea" value="{{comment}}" bindinput="updateComment" placeholder="请输入您的评价" focus="{{focus}}" disabled="{{disabled}}" />
+    </view>
+  <view>
+  <button wx:if="{{!disabled}}" class="btn" bindtap="startRating">确认</button>
+  </view>
+</view>

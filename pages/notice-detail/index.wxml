@@ -1,0 +1,22 @@
+<!--pages/news/detail.wxml-->
+        <!--pages/news/list.wxml-->
+<view class="{{ isHidden }}">
+        <view class="intro" style="background: url({{photo?photo:'https://pvi.dekra.com.cn/Data/miniapp/newsbg.jpg'}})"><text>公告中心</text></view>
+    <view class="news">
+        <view class="news-tit">公告详情</view>
+        <view class="news-title">{{ title }}</view>
+        <view class="news-time">{{ inputTime }}</view>
+        <view class="news-cont">
+            <rich-text nodes="{{content}}"></rich-text>
+<!--            <import src="/wxParse/wxParse.wxml"/>-->
+<!--            <template is="wxParse" data="{{wxParseData:article.nodes}}"/>-->
+        </view>
+<!--        <view class="btns">-->
+<!--            <button class="n1"  open-type='share' type="default" size="default"><text class="fa fa-check-circle-o"></text> 发送给好友</button>-->
+
+<!--            <button class="n2"  type="default" size="default" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo"><text class="fa fa-check-circle-o"></text> 生成海报</button>-->
+
+<!--        </view>-->
+    </view>
+</view>
+<!--<my-poster id="getPoster" bindmyevent="myEventListener" wallpaperbg="{{ wallpaperbg }}" avatar="{{avatar}}" productpic="{{ thumb }}" codeimg="{{ ewmUrl }}" price="" title="{{ title }}" addr="{{ info }}" productname="{{ productname }}"></my-poster>-->

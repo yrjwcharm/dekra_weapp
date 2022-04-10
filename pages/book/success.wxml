@@ -1,0 +1,204 @@
+<!--pages/book/success.wxml-->
+<view class="container">
+    <view class="success-tit">
+        <button class="jumpto" bindtap="jumpto" type="warn" size="mini"
+                wx:if="{{ staff_bj_apppower =='apppower北京' }}">跳转收银
+        </button>
+        机动车年审-订单
+        <button class="cancel" bindtap="powerDrawer" data-statu="open" type="default" size="mini"
+                wx:if="{{info.status=='1'||info.status=='2'}}">取消订单
+        </button>
+    </view>
+    <view class="costbar"
+          wx:if="{{info.status == 1 && stationData.openpay == 1  &&  info.isScore != 1 && info.price >0 && !info.isExpire}}"
+    >
+        <view class="costmsg">已下单成功，可到场支付，也可先在线支付</view>
+        <view class="cost_price">
+            <view class="costnum" bindtap="costDetailOpen">
+                <text class="costP">¥
+                    {{ (info.price - (info.discountonline) - pointPrice) > 0 ? (info.price - (info.discountonline) -
+                    pointPrice) : 0
+                    }}
+                    <text class="tp">综合优惠价 ({{ info.price }}-{{ info.discountonline }}-{{ pointPrice }})</text></text>
+                <!--                <text class="tpt">({{ info.price }}-{{ info.discountonline }}-{{ pointPrice }})</text>-->
+            </view>
+            <!--            <button class="submit" bindtap="weixinpay" formType="submit">在线支付<text>-{{ info.discountonline }} 元</text>-->
+            <!--            </button> -->
+            <button class="submit" bindtap="weixinpay" formType="submit">在线支付<text>{{ (info.price -
+                (info.discountonline) - pointPrice) > 0 ? (info.price - (info.discountonline) - pointPrice) : 0
+                }}元</text>
+            </button>
+        </view>
+        <!--<view class="point_box">
+          <text class="point_tit">积分抵金额</text>
+          <slider class="point" min="0" step="100" max="500" bindchanging="sliderPoint" block-size= "10" show-value/>
+        </view>
+        -->
+        <view class="points" wx:if="{{info.pointDis != 0}}">
+            <text>可抵扣积分:{{ info.maxPoint }}</text>
+            <view>是否抵扣
+                <switch bindchange="switch1Change" type="checkbox"/>
+            </view>
+        </view>
+    </view>
+    <view class="tips_warn">
+        <icon type="warn" size="18" color="#f35757"/>
+        温馨提示:如有违章未处理,请先处理违章再办理年审业务
+    </view>
+    <view class="table" wx:if="{{successInfo}}">
+        <block wx:for="{{successInfo}}" wx:key="{{code}}">
+            <view class="th" wx:if="{{item&&(index % 2 == 0)}}">{{item}}</view>
+            <view class="td" wx:elif="{{item&&(index % 2 != 0)}}">{{item}}
+                <button class="cancel" wx:if="{{ (item =='是' ||item =='否') && info.city=='深圳' }}"
+                        bindtap="powerDrawerView" data-statu="open" type="default" size="mini">交管预约查询
+                </button>
+
+            </view>
+        </block>
+        <view class="th" wx:if="{{infos.pay_sn }}">交易单号</view>
+        <view class="td" wx:if="{{infos.pay_sn }}">
+            {{infos.pay_sn}}
+        </view>
+    </view>
+    <view class="viewbox">
+        <button open-type='share' type="primary" size="mini">
+            <text class="fa fa-share"></text> 分享给朋友
+        </button>
+        <button type="primary" bindtap='location' size="mini">
+            <text class="fa fa-map-marker"></text> 导航前往
+        </button>
+    </view>
+
+    <view class="tips">
+        检测所需材料:
+        <view>1.机动车行驶证原件(正、副本)</view>
+        <view>2.车主身份证原件或代办人身份证原件</view>
+        <view>3.有效期内的交强险副本原件或电子保单打印件（含车船税、挂车提供车船税完税证件原件）</view>
+        <view>4.三角警示牌</view>
+
+    </view>
+
+</view>
+
+        <!--button-->
+        <!--mask-->
+<view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{showModalStatus}}"></view>
+        <!--content-->
+        <!--使用animation属性指定需要执行的动画-->
+<view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus && info.city=='深圳'}}">
+    <form bindsubmit="formSubmitSz" bindreset="formReset">
+        <!--drawer content-->
+        <view class="drawer_title">取消订单</view>
+        <view class="drawer_content">
+            <!-->  <view class="top grid">
+             <label class="title col-0">用户身份</label>
+          <radio-group class="radio-group" bindchange="bookTypeChange" name="bookType">
+             <label class="radio" wx:for="{{bookType}}">
+               <radio class="radioin" value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
+             </label>
+             </radio-group>
+           </view>-->
+            <view class="top grid" wx:if="{{info.status=='1'||info.status=='2'}}">
+                <label class="title col-0">预约号</label>
+                <input class="input_base input_h30 col-1" name="bookNumber" value=""
+                       placeholder='请查看手机短信填写'></input>
+            </view>
+            <view class="top grid">
+                <label class="title col-0">预约验证码</label>
+                <input class="input_base input_h30 col-1" name="verifyCode" value=""
+                       placeholder="请查看手机短信填写"></input>
+            </view>
+            <view class="top grid">
+                <label class="title col-0">手机号码</label>
+                <input class="input_base input_h30 col-1 pinput" bindinput="updateTel" name="mobile"
+                       value="{{ info.bookname==info.carname? info.carmobile : info.bookmobile}}"></input>
+                <button class="buttonget" disabled='{{disabled}}' data-id="2" bindtap="getVerificationCode">
+                    {{time}}
+                </button>
+            </view>
+            <view class="top grid">
+                <label class="title col-0">手机验证码</label>
+                <input class="input_base input_h30 col-1" name="smsCode" value=""></input>
+            </view>
+        </view>
+        <button class="btn_ok" formType="submit">确定</button>
+    </form>
+</view>
+
+<view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus && info.city=='北京'}}">
+    <form bindsubmit="formSubmitBj" bindreset="formReset">
+        <!--drawer content-->
+        <view class="drawer_title">取消订单</view>
+        <view class="drawer_content">
+            <view class="top grid">
+                <input class="hide" type="hidden" name="id" value="{{info.id}}"></input>
+
+                <label class="title col-0">车牌号</label>
+                <input class="input_base input_h30 col-1" disabled="true" name="runnername"
+                       value="{{info.runnername}}"></input>
+            </view>
+            <view class="top grid">
+                <label class="title col-0">发动机号</label>
+                <input class="input_base input_h30 col-1" disabled="true" name="fadongji"
+                       value="{{info.fadongji}}"></input>
+            </view>
+            <view class="top grid">
+                <label class="title col-0">预约手机</label>
+                <input class="input_base input_h30 col-1" disabled="true" name="bookMobile"
+                       value="{{ info.bookname==info.carname? info.carmobile : info.bookmobile}}"></input>
+            </view>
+            <view class="top grid">
+                <label class="title col-0">燃油类型</label>
+                <input class="input_base input_h30 col-1" disabled="true" name="materialType"
+                       value="{{info.materialType}}"></input>
+            </view>
+        </view>
+        <button class="btn_ok" formType="submit">确定</button>
+    </form>
+</view>
+
+
+        <!--button-->
+        <!--mask-->
+<view class="drawer_screen" bindtap="powerDrawerView" data-statu="close" wx:if="{{showModalStatusView}}"></view>
+        <!--content-->
+        <!--使用animation属性指定需要执行的动画-->
+<view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatusView && info.city=='深圳'}}">
+    <form bindsubmit="formSubmitSzView" bindreset="formReset">
+        <!--drawer content-->
+        <view class="drawer_title">查看互联</view>
+        <view class="drawer_content">
+            <!-->  <view class="top grid">
+             <label class="title col-0">用户身份</label>
+          <radio-group class="radio-group" bindchange="bookTypeChange" name="bookType">
+             <label class="radio" wx:for="{{bookType}}">
+               <radio class="radioin" value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
+             </label>
+             </radio-group>
+           </view>-->
+            <view class="top grid" wx:if="{{info.status=='1'||info.status=='2'}}">
+                <label class="title col-0">预约号</label>
+                <input class="input_base input_h30 col-1" name="bookNumber" value=""
+                       placeholder='请查看手机短信填写'></input>
+            </view>
+            <view class="top grid">
+                <label class="title col-0">预约验证码</label>
+                <input class="input_base input_h30 col-1" name="verifyCode" value=""
+                       placeholder="请查看手机短信填写"></input>
+            </view>
+            <view class="top grid">
+                <label class="title col-0">手机号码</label>
+                <input class="input_base input_h30 col-1 pinput" bindinput="updateTel" name="mobile"
+                       value="{{ info.bookname==info.carname? info.carmobile : info.bookmobile}}"></input>
+                <button class="buttonget" disabled='{{disabled}}' data-id="2" bindtap="getVerificationCode">
+                    {{time}}
+                </button>
+            </view>
+            <view class="top grid">
+                <label class="title col-0">手机验证码</label>
+                <input class="input_base input_h30 col-1" name="smsCode" value=""></input>
+            </view>
+        </view>
+        <button class="btn_ok" formType="submit">确定</button>
+    </form>
+</view>

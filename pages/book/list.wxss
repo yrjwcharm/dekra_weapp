@@ -1,0 +1,83 @@
+/* pages/list/list.wxss */
+page{padding-top:80rpx;}
+.company{padding:15rpx 30rpx; overflow: hidden; background-color:#fff; border-bottom:1px solid #ddd; border-top:1px solid #ddd; position: relative; margin-bottom:-1px;}
+.company .pic{width: 200rpx; height: 200rpx; background-color: #eeeeee; float:left; position: relative;}
+.comp_tit{font-size:28rpx; margin-left: 240rpx; padding-right:130rpx;}
+.comp_desc{font-size:24rpx; margin-left: 240rpx; color:#666;}
+.comp_stars{margin-left: 240rpx; color:orange;}
+.comp_stars .fa{margin-right: 10rpx;}
+.comp_feature{margin-left:240rpx; font-size:24rpx; color:#666; margin-top:10rpx;}
+.comp_feature text{margin-right:10rpx; border:1rpx solid #666; text-align: center; padding:0 10rpx;}
+
+.region{background:rgba(0,0,0,.6); color:#fff; position: absolute; bottom:0; left:0; right:0; height:50rpx; line-height: 50rpx; text-align: center; font-size:24rpx;}
+
+.map{padding:10rpx 150rpx 0 0; font-size:24rpx; background-color:#fff; margin-left:240rpx;}
+.map .fa{margin-right:10rpx; }
+
+.txt_j{position: absolute; right:30rpx; top:15rpx; background-color:#007d40; text-align: center; color:#fff; font-size:24rpx; width:50rpx; height:50rpx; line-height: 50rpx;}
+
+.txt_l{position: absolute; right:90rpx; top:15rpx; background-color: green; text-align: center; color:#fff; font-size:24rpx; width:50rpx; height:50rpx; line-height: 50rpx;}
+
+.distance{color:#fff; font-size:24rpx; position: absolute; right:20rpx; top:200rpx; background-color:#999; padding:0 10rpx;}
+
+
+.nav {
+  height: 80rpx;
+  line-height: 80rpx;
+  width: 100%;
+  text-align: center;
+}
+.nav_centent_arr {
+  position: absolute; left:0; right:0; top:89rpx; z-index: 3; background-color: #fff;
+  overflow-y: auto;
+}
+
+.nav_item {
+  border-bottom: 1px solid #999;
+}
+.content {
+  width: 100%;
+}
+.red {
+  display: inline-block;
+  color: #d0d0d0;
+  font-size: 28rpx;
+}
+.icon {
+  display: inline-block;
+  color: red;
+  transform: rotate(90deg);
+}
+.nav_centent {
+  margin: 30rpx 25rpx 20rpx 30rpx;
+  font-size: 32rpx;
+  border-bottom: 1px solid #f2f2f2;
+  padding-bottom: 30rpx;
+  background: #fff;
+  z-index: 3;
+}
+.topbar {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size:28rpx;
+  border-bottom:1px solid #ddd;
+  z-index: 3;
+  position: relative;
+  background: #fff;
+  position:fixed;
+  left:0;
+  top:0;
+}
+
+.overlay{position: fixed; left:0; right:0; top:0; bottom:0; background: rgba(0,0,0,.6); z-index: 2;}
+
+
+.tele{margin-left:240rpx; padding-top:15rpx; font-size:24rpx; background-color:#fff;}
+.tele .fa{margin-right:10rpx;}
+
+.bdetail{position: absolute; right:10rpx; top:120rpx;}
+.notfind{width:750rpx; height:604rpx;}
+
+.btn-book[size=mini]{float:right; padding:0 15rpx;}

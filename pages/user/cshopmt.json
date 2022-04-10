@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "my-phone": "/component/easyphone/index"
+  }
+}

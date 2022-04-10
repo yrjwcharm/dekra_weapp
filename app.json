@@ -1,0 +1,74 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/question/query",
+    "pages/question.new/query",
+    "pages/book/list",
+    "pages/book/szinputui",
+    "pages/book/bjinputui",
+    "pages/book/detect",
+    "pages/book/success",
+    "pages/book/redetect",
+    "pages/user/index",
+    "pages/user/dingdan",
+    "pages/news/detail",
+    "pages/news/list",
+    "pages/user/staff",
+    "pages/user/cshopmt",
+    "pages/user/agreement",
+    "pages/user/myinfo",
+    "pages/book/checkstand",
+    "pages/about/about",
+    "pages/about/webview"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#007d40",
+    "navigationBarTitleText": "德凯车检",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#858585",
+    "selectedColor": "#007d40",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/icons/btn-tabs_01.png",
+        "selectedIconPath": "images/icons/btn-tabs_01_a.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/book/list",
+        "iconPath": "images/icons/btn-tabs_02.png",
+        "selectedIconPath": "images/icons/btn-tabs_02_a.png",
+        "text": "年审预约"
+      },
+      {
+        "pagePath": "pages/user/index",
+        "iconPath": "images/icons/btn-tabs_03.png",
+        "selectedIconPath": "images/icons/btn-tabs_03_a.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 30000
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "plugins": {
+    "ocr-plugin": {
+      "version": "3.0.6",
+      "provider": "wx4418e3e031e551be"
+    }
+  },
+  "sitemapLocation": "sitemap.json",
+  "navigateToMiniProgramAppIdList": [
+    "wx34b0738d0eef5f78"
+  ]
+}

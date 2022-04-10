@@ -1,0 +1,66 @@
+page {
+  background: #efeff4;
+}
+
+/* pages/address/address.wxss */
+
+.container {
+  font-size: 14px;
+  background-color: white;
+}
+
+.section {
+  height: 120rpx;
+  border-bottom: 1px lightgrey solid;
+  display: flex;
+  align-items: center;
+  margin: 0 30rpx;
+  font-size:30rpx;
+  position: relative;
+}
+
+.btn-area {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-area button {
+  width: 90%;
+  position: fixed;
+  bottom: 40rpx;
+  color: #fff;
+  background-color: #fc0;
+}
+
+.picker {
+  width: 600rpx;
+  height: 120rpx;
+  line-height:120rpx;
+}
+.ww{
+  width: 250px;
+}
+.picker,.mpicker{display: inline-block; vertical-align: middle; width:10rem;}
+.num-pre{width:75rpx;display:inline-block; vertical-align: }
+.label{text-align: right; width:120rpx; margin-right: 30rpx; display: inline-block; vertical-align: middle; color:#666;}
+ input{display: inline-block; vertical-align: middle; width:300rpx;}
+.text{display: inline-block; vertical-align: middle;}
+.buttonget {
+  background-color: #fff;
+  display: inline-block;
+  font-size: 26rpx;
+  color: rgb(136,
+136, 136);
+  border: 1px
+solid #888;
+  border-radius: 10rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+}
+
+.agreement{position:relative; line-height: 1; margin-top:20rpx; padding:10rpx 40rpx 20rpx; font-size:24rpx; color:#666; margin-top: 20rpx;}
+.agreement text{color:green;}
+.agreement navigator{display: inline;}
+
+.text{background-color:#eee; display: block; padding:0 20rpx;}
+.idcard{width: 500rpx;}

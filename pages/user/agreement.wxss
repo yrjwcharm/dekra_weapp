@@ -1,0 +1,12 @@
+/* pages/user/agreement.wxss */
+.agreement {
+  font-size: 14px;
+  background-color: white;
+  padding-top:50rpx;
+}
+
+.section {
+  margin: 0 30rpx 20rpx;
+  font-size:28rpx;
+  padding:0;
+}

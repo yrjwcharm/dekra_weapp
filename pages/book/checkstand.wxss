@@ -1,0 +1,439 @@
+.success-tit {
+    padding: 20rpx 30rpx;
+    font-size: 36rpx;
+    text-align: center;
+    display: block;
+    color: green;
+}
+
+.table {
+    font-size: 28rpx;
+    margin: 0 30rpx 20rpx;
+    overflow: hidden;
+}
+
+.td {
+    width: 75%;
+    justify-content: center;
+    display: flex;
+    height: 90rpx;
+    align-items: center;
+    float: left;
+    border: 1rpx solid #ddd;
+    box-sizing: border-box;
+}
+
+.bg-w {
+    background: snow;
+}
+
+.bg-g {
+    background: #E6F3F9;
+}
+
+.th {
+    width: 25%;
+    justify-content: center;
+    background: green;
+    color: #fff;
+    display: flex;
+    height: 90rpx;
+    align-items: center;
+    float: left;
+    border: 1rpx solid #ddd;
+    box-sizing: border-box;
+}
+
+.table-tit {
+    padding: 0 20px;
+    color: green;
+    font-size: 30rpx;
+}
+
+.text {
+    font-size: 28rpx;
+    padding: 0 30rpx;
+    display: block;
+    color: red;
+}
+
+.tip {
+    font-size: 28rpx;
+    padding: 0 30rpx;
+    color: #666;
+    display: block;
+}
+
+.viewbox {
+    text-align: center;
+    border-top: 1rpx solid #ddd;
+    margin-top: 10rpx;
+}
+
+.viewbox button {
+    margin: 20rpx 10rpx;
+}
+
+.table button {
+    margin: 0 10rpx
+}
+
+.cancel {
+    margin-right: 10rpx;
+    float: right;
+    margin-top: 15rpx;
+}
+
+.clearData {
+    vertical-align: middle;
+    margin-left: 20rpx;
+}
+
+
+/*button*/
+.btn {
+    width: 80%;
+    padding: 20rpx 0;
+    border-radius: 10rpx;
+    text-align: center;
+    margin: 40rpx 10%;
+    background: #000;
+    color: #fff;
+}
+
+/*mask*/
+.drawer_screen {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background: #000;
+    opacity: 0.5;
+    overflow: hidden;
+}
+
+/*content*/
+.drawer_box {
+    width: 650rpx;
+    overflow: hidden;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 使用css3的transform来实现 */
+    z-index: 1001;
+    background: #FAFAFA;
+    border-radius: 3px;
+}
+
+.drawer_title {
+    padding: 10rpx;
+    font: 30rpx "microsoft yahei";
+    text-align: center;
+    text-indent: 30rpx;
+}
+
+.drawer_content {
+    /* height: 210px;   */
+    /* overflow-y: scroll; /*超出父盒子高度可滚动*/
+}
+
+.btn_ok {
+    padding: 0 20rpx;
+    background: #ddd;
+    /*font: 26rpx "microsoft yahei";*/
+    text-align: center;
+    border-top: 1px solid #E8E8EA;
+    color: #999;
+}
+
+.btn_ok2 {
+    padding: 20rpx;
+    background: green;
+    font: 26rpx "microsoft yahei";
+    text-align: center;
+    border-top: 1px solid #E8E8EA;
+    color: #fff;
+    border-radius: 0;
+}
+
+.top {
+    margin-top: 0;
+}
+.bottom{
+    padding-bottom: 10rpx;
+}
+._top{
+    padding-top: 10rpx;
+}
+.title {
+    height: 40rpx;
+    line-height: 40rpx;
+    display: block;
+    font: 300 28rpx/30px "microsoft yahei";
+}
+
+.input_base {
+    border: 2rpx solid #ccc;
+    padding-left: 10rpx;
+    margin-right: 50rpx;
+}
+
+.input_h30 {
+    height: 30px;
+    line-height: 30px;
+}
+
+.input_h60 {
+    height: 60px;
+}
+
+.input_view {
+    font: 12px "microsoft yahei";
+    background: #fff;
+    color: #000;
+    line-height: 30px;
+}
+
+input {
+    font: 12px "microsoft yahei";
+    background: #fff;
+    color: #000;
+}
+
+radio {
+    padding: 10rpx 0;
+}
+
+/* radio{margin-right: 20px;}   */
+/* .grid { display: -webkit-box; display: box; }   */
+/* .col-0 {-webkit-box-flex:0;box-flex:0;}   */
+.grid {
+    padding: 0 20rpx;
+}
+
+.col-1 {
+    -webkit-box-flex: 1;
+    box-flex: 1;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+
+.buttonget {
+    margin-left: 10rpx;
+    margin-right: 50rpx;
+    width: 200rpx;
+    background-color: #fff;
+    display: inline-block;
+    font-size: 26rpx;
+    color: rgb(136,
+    136, 136);
+    border: 1px solid #888;
+    border-radius: 10rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    vertical-align: middle;
+}
+
+.pinput {
+    margin-right: 0rpx;
+}
+
+.copyright {
+    background-color: #fff;
+    margin-top: 20rpx;
+}
+
+picker {
+    border: 1px solid #ddd;
+    background-color: #fff;
+    font-size: 28rpx;
+    text-align: center;
+    vertical-align: middle;
+    height: 40rpx;
+    line-height: 40rpx;
+}
+
+
+.platenumber {
+    height: 80rpx;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 80rpx;
+    width: 250rpx;
+}
+
+
+.carnumBox {
+    margin: 0 30rpx 20rpx;
+    font-size: 36rpx;
+    border: 2rpx solid #ddd;
+    padding: 0 0 0 20rpx;
+    background-color: #fff;
+}
+
+
+.radio-group {
+    display: inline-block;
+    /*vertical-align: middle;*/
+    font-size: 24rpx;
+    /*line-height: 1;*/
+}
+
+.radioin {
+    transform: scale(0.6);
+    position: relative;
+    top: -2rpx;
+}
+
+.hprice {
+    color: red;
+}
+
+.ipt {
+    display: inline-block;
+    height: auto;
+    vertical-align: middle;
+    width: 330rpx;
+    border: 2rpx solid #000;
+    padding-left: 20rpx;
+}
+
+.ipt_m {
+    width: 300rpx;
+}
+
+.mtotalpricebox {
+    margin: 10rpx 0;
+}
+
+/* .mtotalprice{position: absolute; left:150rpx; top:0;} */
+
+
+.timerbox {
+    padding: 10rpx 30rpx;
+    background-color: #fff;
+}
+
+.timer {
+    font-size: 32rpx;
+    background-color: #fff;
+    padding: 15rpx 20rpx;
+    position: relative;
+    border-bottom: 2rpx solid #ddd;
+}
+
+.timer .btn-book {
+    /*vertical-align: middle;*/
+    position: absolute;
+    right: 20rpx;
+    top: 30rpx;
+    background-color: #007d40;
+}
+.view-fl{
+  display: flex;
+  flex-direction: column;
+
+
+}
+
+.num {
+    color: #000;
+    font-weight: bold;
+}
+
+.paybox {
+    border-top: 2rpx solid #ddd;
+}
+
+
+.mask_layer {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    background: #000;
+    opacity: 0.5;
+    overflow: hidden;
+}
+
+.modal_box {
+    text-align: center;
+    width: 76%;
+    overflow: hidden;
+    position: fixed;
+    top: 35%;
+    left: 0;
+    background: #fafafa;
+    margin: -150px 12% 0 12%;
+    border-radius: 3px;
+    z-index: 99999;
+}
+
+.ttle {
+    padding: 15px;
+    text-align: center;
+    background-color: gazure;
+}
+
+.modalMsg {
+    text-align: center;
+    display: block;
+    font-size: 28rpx;
+    padding-bottom: 30rpx;
+}
+
+.canvas-code {
+    width: 250px;
+    height: 250px;
+    display: inline-block;
+}
+
+/* .btn_ewm{position: absolute; top:0; right:0; border-radius:0; color:#fff; background:#007d40; padding:0 20rpx;} */
+
+.btn_ewm {
+    border-radius: 0;
+    color: #fff;
+    background: #007d40;
+    padding: 0 20rpx;
+    /*margin-bottom: 30rpx;*/
+}
+
+.jumpto {
+    vertical-align: middle;
+    margin-right: 20rpx;
+}
+
+.today {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 10rpx;
+    bottom: 0;
+    background: green;
+}
+::-webkit-scrollbar {
+    display:none;
+    width:0;
+    height:0;
+    color:transparent;
+}
+
+.remark-input{
+    background: transparent;
+    height: 25px;
+}
+.placeholder-class{
+    font-size: 12px;
+    color:#999
+}

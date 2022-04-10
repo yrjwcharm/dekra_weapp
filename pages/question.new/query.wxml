@@ -1,0 +1,40 @@
+<!--pages/detail/detail.wxml-->
+<view class="container">
+  <view class="title">{{question.title}}</view>
+  <view class="des">{{question.des}}</view>
+  <view class="question" wx:for="{{question.psqlist}}" wx:key="{{index}}">
+    <view class="questionB">
+      <view class="questionT">
+      <text wx:if="{{item.isMust == 1}}">*</text>
+        {{item.myOrder}}、{{item.question}}
+      </view>
+      <view class="questionA">
+        <radio-group class="radio-group" 
+        data-quid="{{item.id}}"
+        bindchange="radioChange" 
+        wx:if="{{item.type == 1}}">
+          <label class="radio"  wx:for="{{item.answerslist}}" wx:key="{{index}}">
+            <radio disabled="{{ishow}}" value="{{item.id}}"  checked="{{item.checked}}" />{{item.answer}}
+          </label>
+        </radio-group>
+        <checkbox-group class="radio-group" 
+        data-quid="{{item.id}}"
+        bindchange="radioChange" 
+        wx:if="{{item.type == 2}}">
+          <label class="checkbox"wx:for="{{item.answerslist}}" wx:key="{{index}}">
+            <checkbox disabled="{{ishow}}" value="{{item.id}}"  checked="{{item.checked}}" />{{item.answer}}
+          </label>
+          <!-- <label class="radio"  wx:for="{{item.answerslist}}" wx:key="{{index}}">
+            <radio disabled="{{ishow}}" value="{{item.id}}"  checked="{{item.checked}}" />{{item.answer}}1
+          </label> -->
+        </checkbox-group>
+        <view class="textarea" wx:if="{{item.type == 0}}">
+          <textarea disabled="{{ishow}}" d placeholder="请输入回答" data-quid="{{item.id}}" value="{{item.value}}" bindinput='textareaV'/>
+        </view>
+      </view>
+    </view>
+  </view>
+  <button class="btn"  wx:if="{{!ishow}}" data-paperid="{{question.id}}" catchtap='postAns'>提交</button>
+    <view class="des2">{{question.think}}</view>
+
+</view>

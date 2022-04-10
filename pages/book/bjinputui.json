@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+        "ocr-navigator": "plugin://ocr-plugin/ocr-navigator",
+        "plate-number-keyboard": "/component/plate-number-keyboard/plate-number-keyboard",
+        "my-phone": "/component/easyphone/index"
+  }
+}

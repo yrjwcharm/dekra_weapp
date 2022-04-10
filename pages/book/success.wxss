@@ -1,0 +1,397 @@
+/* pages/book/success.wxss */
+
+.success-tit {
+    padding: 20rpx 30rpx;
+    font-size: 36rpx;
+    text-align: center;
+    display: block;
+    color: #007d40;
+}
+
+.table {
+    font-size: 28rpx;
+    margin: 0 30rpx 20rpx;
+    overflow: hidden;
+}
+
+.td {
+    width: 70%;
+    justify-content: center;
+    display: flex;
+    height: 90rpx;
+    align-items: center;
+    float: left;
+    border: 1rpx solid #ddd;
+    box-sizing: border-box;
+}
+
+.bg-w {
+    background: snow;
+}
+
+.bg-g {
+    background: #E6F3F9;
+}
+
+.th {
+    width: 30%;
+    justify-content: center;
+    background: #007d40;
+    color: #fff;
+    display: flex;
+    height: 90rpx;
+    align-items: center;
+    float: left;
+    border: 1rpx solid #ddd;
+    box-sizing: border-box;
+}
+
+.table-tit {
+    padding: 0 20px;
+    color: #007d40;
+    font-size: 30rpx;
+}
+
+.text {
+    font-size: 28rpx;
+    padding: 0 30rpx;
+    display: block;
+    color: red;
+}
+
+.tip {
+    font-size: 28rpx;
+    padding: 0 30rpx;
+    color: #666;
+    display: block;
+}
+
+.viewbox {
+    text-align: center;
+    padding-top: 20rpx;
+    border-top: 1rpx solid #ddd;
+    margin-top: 10rpx;
+}
+
+.viewbox button {
+    margin: 0 10rpx;
+}
+
+.table button {
+    margin: 0 10rpx
+}
+
+.cancel {
+    vertical-align: middle;
+    margin-left: 20rpx;
+}
+
+
+/*button*/
+.btn {
+    width: 80%;
+    padding: 20rpx 0;
+    border-radius: 10rpx;
+    text-align: center;
+    margin: 40rpx 10%;
+    background: #000;
+    color: #fff;
+}
+
+/*mask*/
+.drawer_screen {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background: #000;
+    opacity: 0.5;
+    overflow: hidden;
+}
+
+/*content*/
+.drawer_box {
+    width: 650rpx;
+    overflow: hidden;
+    position: fixed;
+    top: 50%;
+    left: 0;
+    z-index: 1001;
+    background: #FAFAFA;
+    margin: -150px 50rpx 0 50rpx;
+    border-radius: 3px;
+}
+
+.drawer_title {
+    padding: 15px;
+    font: 20px "microsoft yahei";
+    text-align: center;
+}
+
+.drawer_content {
+    height: 210px;
+    overflow-y: scroll; /*超出父盒子高度可滚动*/
+}
+
+.btn_ok {
+    padding: 10px;
+    font: 20px "microsoft yahei";
+    text-align: center;
+    border-top: 1px solid #E8E8EA;
+    color: #3CC51F;
+}
+
+.top {
+    padding-top: 8px;
+}
+
+.bottom {
+    padding-bottom: 8px;
+}
+
+.title {
+    height: 30px;
+    line-height: 30px;
+    width: 160rpx;
+    text-align: center;
+    display: inline-block;
+    font: 300 28rpx/30px "microsoft yahei";
+}
+
+.input_base {
+    border: 2rpx solid #ccc;
+    padding-left: 10rpx;
+    margin-right: 50rpx;
+}
+
+.input_h30 {
+    height: 30px;
+    line-height: 30px;
+}
+
+.input_h60 {
+    height: 60px;
+}
+
+.input_view {
+    font: 12px "microsoft yahei";
+    background: #fff;
+    color: #000;
+    line-height: 30px;
+}
+
+input {
+    font: 12px "microsoft yahei";
+    background: #fff;
+    color: #000;
+}
+
+radio {
+    margin-right: 0;
+}
+
+.grid {
+    display: -webkit-box;
+    display: box;
+}
+
+.col-0 {
+    -webkit-box-flex: 0;
+    box-flex: 0;
+}
+
+.col-1 {
+    -webkit-box-flex: 1;
+    box-flex: 1;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+
+.buttonget {
+    margin-left: 10rpx;
+    margin-right: 50rpx;
+    width: 200rpx;
+    background-color: #fff;
+    display: inline-block;
+    font-size: 26rpx;
+    color: rgb(136,
+    136, 136);
+    border: 1px solid #888;
+    border-radius: 10rpx;
+    height: 70rpx;
+    line-height: 70rpx;
+    vertical-align: middle;
+}
+
+.pinput {
+    margin-right: 0rpx;
+}
+
+.copyright {
+    background-color: #fff;
+    margin-top: 20rpx;
+}
+
+
+.container, page {
+    height: 100%;
+}
+
+.container {
+    padding-bottom: 150rpx;
+}
+
+
+.costbar {
+    position: fixed;
+    bottom: 0;
+    background-color: #fdfdfd;
+    left: 0;
+    width: 100%;
+    z-index: 3;
+    border-top: 2rpx solid #ddd;
+}
+
+.costbar .submit {
+    width: 250rpx;
+    background: #007d40;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 0;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-size: 32rpx;
+    height: 100rpx;
+    padding-top: 10rpx;
+    line-height: 1.5;
+}
+
+.cost_price {
+    height: 100rpx;
+    line-height: 100rpx;
+    font-size: 36rpx;
+    padding-left: 20rpx;
+    color: #333;
+}
+
+.costbar .submit text {
+    display: block;
+    font-size: 24rpx;
+}
+
+.cost_price .fa {
+    margin-left: 10rpx;
+    color: #fff;
+}
+
+.costmsg {
+    font-size: 24rpx;
+    background: #f1f8d7;
+    color: #c29c87;
+    padding: 10rpx 0 10rpx 30rpx;
+}
+
+
+.tips {
+    font-size: 24rpx;
+    margin: 30rpx;
+    padding: 20rpx;
+    background: #007d40;
+    color: #fff;
+}
+
+.costP {
+    position: absolute;
+    left: 20rpx;
+    top: 70rpx;
+    line-height: 1;
+}
+
+.tp {
+    font-size: 20rpx;
+    color: #333;
+}
+
+.tpt {
+    font-size: 20rpx;
+    color: #333;
+    position: absolute;
+    left: 20rpx;
+    top: 80rpx;
+}
+
+.point_box {
+    width: 200rpx;
+    position: absolute;
+    top: 50rpx;
+    left: 260rpx;
+}
+
+.point {
+    width: 200rpx;
+    margin: 0;
+    padding: 0;
+}
+
+.point_tit {
+    font-size: 24rpx;
+}
+
+.radio-group {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 20rpx 0;
+}
+
+.radioin {
+    transform: scale(0.6);
+    position: relative;
+    top: -2rpx;
+}
+
+.points {
+    width: 200rpx;
+    position: absolute;
+    top: 50rpx;
+    left: 300rpx;
+}
+
+.points text, .points view {
+    font-size: 24rpx;
+}
+
+.points switch {
+    margin-left: 10rpx;
+}
+
+
+.tips_warn {
+    font-size: 24rpx;
+    padding: 20rpx;
+    background: #fbbbbb;
+    color: #f35757;
+    position: relative;
+    padding-left: 70rpx;
+    margin: 0 30rpx 20rpx;
+}
+
+.tips_warn icon {
+    position: absolute;
+    left: 20rpx;
+    top: 20rpx
+}
+
+.jumpto {
+    vertical-align: middle;
+    margin-right: 20rpx;
+}

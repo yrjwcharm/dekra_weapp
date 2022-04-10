@@ -1,0 +1,355 @@
+
+.success-tit {
+    padding: 20rpx 30rpx;
+    font-size: 36rpx;
+    text-align: center;
+    display: block;
+    color: green;
+}
+
+.btn-book {
+    vertical-align: middle;
+    position: absolute;
+    right: 20rpx;
+    top: 15rpx;
+}
+
+.num {
+    color: green;
+    font-weight: bold;
+}
+
+
+.text {
+    font-size: 28rpx;
+    padding: 0 30rpx;
+    display: block;
+}
+
+.tip {
+    font-size: 28rpx;
+    padding: 0 30rpx;
+    color: #666;
+    display: block;
+}
+
+
+.step {
+    padding: 10rpx 20rpx;
+    margin: 0 30rpx 0;
+    background: green;
+    color: #fff;
+    font-size: 36rpx;
+    text-align: center
+}
+
+.step_con {
+    margin: 0 30rpx;
+    border: 1rpx solid #ccc;
+    text-align: center;
+    padding: 10rpx;
+    color: green;
+}
+
+.step_tip {
+    display: block;
+    text-align: center;
+    font-size: 24rpx;
+    color: #666;
+}
+
+
+.sign {
+    vertical-align: middle;
+}
+
+.fa {
+    color: green;
+    margin-right: 20rpx;
+}
+
+.radio-group {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 20rpx 0;
+}
+
+.radioin {
+    transform: scale(0.6);
+    position: relative;
+    top: -2rpx;
+}
+
+.booking {
+    padding-bottom: 20rpx;
+    background-color: #ccc
+}
+
+.infos {
+    background-color: #fff;
+    padding: 10rpx 40rpx 20rpx;
+}
+
+.name {
+    font-size: 36rpx;
+    padding-bottom: 20rpx;
+}
+
+.desc {
+    font-size: 28rpx;
+}
+
+.carinfobox {
+    position: relative;
+    line-height: 1;
+    background-color: #fff;
+    padding: 0 40rpx 10rpx
+}
+
+.row {
+    padding: 10rpx 0;
+    border-top: 1rpx solid #ccc;
+    font-size: 30rpx;
+    position: relative;
+}
+
+.row:first-child {
+    border: 0;
+}
+
+.ch_area {
+    color: green;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 36rpx;
+}
+
+.ipt {
+    display: inline-block;
+    margin-left: 20rpx;
+    height: auto;
+    vertical-align: middle;
+    padding: 20rpx 0;
+}
+
+.type {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.picker-one {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 20rpx;
+    width: 550rpx;
+    text-align: left;
+    padding: 20rpx 0;
+}
+
+
+checkbox {
+    transform: scale(0.6);
+}
+
+.checkbox {
+    float: left;
+    width: 50%;
+}
+
+.checkboxs .row {
+    overflow: hidden;
+}
+
+.checkboxs .row text {
+    padding-bottom: 10rpx;
+}
+
+/* checkbox-group{overflow:hidden; padding: 20rpx 0 0;} */
+.exhaust {
+    display: block;
+}
+
+.costbar {
+    position: fixed;
+    bottom: 0;
+    background-color: gray;
+    left: 0;
+    width: 100%;
+    z-index: 9;
+}
+
+.costbar .submit {
+    width: 200rpx;
+    background: green;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 0;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-size: 36rpx;
+    height: 100rpx;
+}
+
+.cost_price {
+    height: 100rpx;
+    line-height: 100rpx;
+    font-size: 36rpx;
+    padding-left: 20rpx;
+    color: #fff;
+}
+
+.cost_price .fa {
+    margin-left: 10rpx;
+    color: #fff;
+}
+
+.cost_detail {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    bottom: 100rpx;
+}
+
+.cost_detail_hd {
+    height: 30rpx;
+    background-color: #eee;
+    line-height: 30rpx;
+    color: #666;
+    position: relative;
+    padding-left: 20rpx;
+    font-size: 28rpx;
+    padding-top: 20rpx;
+    padding-bottom: 20rpx;
+}
+
+.cost_detail_hd text {
+    position: absolute;
+    right: 20rpx;
+    top: 15rpx;
+}
+
+.cost_detail_item {
+    height: 30rpx;
+    background-color: #fff;
+    line-height: 30rpx;
+    color: #000;
+    position: relative;
+    padding-left: 20rpx;
+    font-size: 28rpx;
+    padding-top: 10rpx;
+    padding-bottom: 10rpx;
+}
+
+.cost_detail_item text {
+    position: absolute;
+    right: 20rpx;
+    top: 5rpx;
+    color: red;
+}
+
+.tp {
+    font-size: 24rpx;
+    color: #ccc;
+}
+
+
+.row button {
+    vertical-align: middle;
+}
+
+
+/*  */
+/*主容器*/
+.stepper {
+    text-indent: 0;
+    width: 164rpx;
+    height: 52rpx;
+    /*给主容器设一个边框*/
+    border: 2rpx solid #ccc;
+    border-radius: 6rpx;
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/*加号和减号*/
+.stepper text {
+    width: 40rpx;
+    line-height: 52rpx;
+    text-align: center;
+    float: left;
+}
+
+/*数值*/
+.stepper input {
+    pointer-events: none;
+    width: 80rpx;
+    height: 52rpx;
+    float: left;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 24rpx;
+    max-height: auto;
+    /*给中间的input设置左右边框即可*/
+    border-left: 2rpx solid #ccc;
+    border-right: 2rpx solid #ccc;
+}
+
+/*普通样式*/
+.stepper .normal {
+    color: black;
+}
+
+/*禁用样式*/
+.stepper .disabled {
+    color: #ccc;
+}
+
+
+.tectbox {
+    overflow: hidden;
+}
+
+.tecttit {
+    padding: 20rpx 0;
+    font-size: 32rpx;
+    display: block;
+}
+
+.tectitem {
+    padding: 20rpx 0;
+    font-size: 28rpx;
+    text-indent: 20rpx;
+    position: relative;
+}
+
+page {
+    padding-bottom: 100rpx;
+}
+
+.plateinput {
+    display: none;
+}
+
+.onekey {
+    margin-top: 20rpx;
+    position: absolute;
+    right: 20rpx;
+    top: 10rpx;
+}
+
+.platenumber {
+    height: 80rpx;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 80rpx;
+    width: 300rpx;
+}
+
+.jumpto {
+    vertical-align: middle;
+    margin-right: 20rpx;
+}

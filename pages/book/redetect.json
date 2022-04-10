@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "my-easyocr": "/component/easyocr/index",
+    "plate-number-keyboard": "/component/plate-number-keyboard/plate-number-keyboard"
+  }
+}
