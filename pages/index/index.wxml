@@ -35,7 +35,7 @@
         <view class="news-tit">资讯中心</view>
         <view class="news-list" wx:for="{{contentlist}}" wx:for-item="item" wx:key="content_id">
 
-            <navigator url="/pages/news/detail?contentId={{item.id}}" hidden="{{item.id==35}}">
+            <navigator url="/pages/news/detail?contentId={{item.id}}" hidden="{{item.id!=38}}">
                 <view class="news-item">
                     <image class="thumb" src="{{item.thumb}}"/>
                     <view class="title">{{item.title}}</view>

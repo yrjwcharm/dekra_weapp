@@ -122,7 +122,6 @@ Page({
             contentlistTem = []
           }
           let contentlist = res.data.list;
-          console.log(333,contentlist)
           for(let i=0; i<contentlist.length; i++){
             contentlist[i].inputtime = util.formatDate(new Date(contentlist[i].inputtime*1000));
             if (contentlist[i].thumb != "") {

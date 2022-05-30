@@ -279,8 +279,6 @@ Page({
         },
         success: function (res) {
           let data = res.data;
-          //console.log(app.d.hostApi + data.url);
-
           if (data.success) {
             that.setData({
               avatar: avatar,

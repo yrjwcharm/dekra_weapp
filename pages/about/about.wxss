@@ -8,8 +8,14 @@
 }
 
 .section {
-  margin: 0 30rpx 20rpx;
+  margin: 10rpx 30rpx 20rpx;
   font-size:28rpx;
   padding:0 30rpx;
   text-indent:56rpx;
+}
+.title{
+  margin-left: 30rpx;
+  font-size: 30rpx;
+  color: #333333;
+  font-weight: bolder;
 }
