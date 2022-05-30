@@ -166,6 +166,7 @@ Page({
             showLock.status = true;
             showLock.msg = data.detail.locknotice;
           }
+          console.log(333,data.detail.poster,data.detail.gzhewm,app.d.hostStatic + "/Data/miniapp/testBg.png",)
           that.setData({
             isAdmin:isAdmin,
             showLock: showLock,
@@ -181,7 +182,7 @@ Page({
             thumb: data.detail.thumb,
             poster: data.detail.poster,
             gzhEwm: data.detail.gzhewm,
-            wallpaperbg: app.d.hostStatic + "/Data/miniapp/testBg.png",
+            wallpaperbg: app.d.hostStatic + "/Data/miniapp/testBg.png?t=2",
             cartype: cartype
 
           });
